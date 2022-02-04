@@ -1,11 +1,18 @@
 /*  */
 
-const X = 4
+const X = 12
+let alphas = Array(X ** 2).fill(1.0)
 
 const container = document.getElementById("container")
+container.style.backgroundColor = "red"
 createGrid(container)
 
+let toggle = 0
+window.addEventListener("mousedown", () => {toggle = 1})
+window.addEventListener("mouseup", () => {toggle = 0})
+
 function createGrid(grid) {
+    console.log("build grid")
     for (let i = 0; i < X; i++) {
         const row = document.createElement("div")
         row.classList.add("row")
@@ -15,54 +22,48 @@ function createGrid(grid) {
             justify-content: space-evenly;
         `
         for (let j = 0; j < X; j++) {
+            const idx = i * X + j
+            console.log(alphas[idx])
             const tile = document.createElement("div")
             tile.classList.add("tile")
-            tile.setAttribute("id", `${i*X + j}`)
+            tile.setAttribute("id", `${idx}`)
             tile.style.cssText = `
                 flex: 1;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                // border: 1px solid grey;
-                background-color: blue;
-                // transition: all 0.1s ease-out;
+                background-color: rgba(38, 169, 230, ${alphas[idx]});
+                transition: all .2s;
             `
-            // tile.addEventListener("mouseenter", handleMouseEnter)
-            // tile.addEventListener("mouseover", handleMouseOver)
-            // tile.addEventListener("transitionend", handleTransEnd)
-            // tile.textContent = `${i*X + j}`
-            tile.onmouseover = mouseOver
-            tile.onmouseleave = mouseLeave
+            tile.addEventListener("mouseover", mouseOver)
+            tile.addEventListener("mousedown", mouseDown)
+            // tile.addEventListener("mouseout", mouseOut)
+            // tile.textContent = `${i*X+j}`
             row.append(tile)
         }
         grid.append(row)
     }
 }
 
-// function handleMouseEnter(e) {
-//     console.log(e)
-//     console.log(this)
-//     this.style.cssText = `
-//         background-color: white;
-//     ` 
-// }
-
 function mouseOver(e) {
-    console.log(this)
-    this.style.cssText = `
-        background-color: yellow;
-    ` 
+    if (!toggle) return
+    const idx = this.getAttribute("id")
+    console.log(idx)
+    alphas[idx] -= 0.25
+    this.style.backgroundColor = `rgba(38, 169, 230, ${alphas[idx]})`
 }
 
-function mouseLeave(e) {
-    console.log(this)
-    this.style.cssText = `
-        background-color: blue;
-    ` 
+function mouseDown(e) {
+    const idx = this.getAttribute("id")
+    console.log(idx)
+    alphas[idx] -= 0.25
+    this.style.backgroundColor = `rgba(38, 169, 230, ${alphas[idx]})`
 }
 
-// function handleTransEnd(e) {
-//     this.style.cssText = `
-//         background-color: blue;
-//     `
+// function mouseOut(e) {
+//     if (!toggle) return
+//     const idx = this.getAttribute("id")
+//     console.log(idx)
+//     alphas[idx] -= .05
+//     this.style.backgroundColor = `rgba(38, 169, 230, ${alphas[idx]})`
 // }

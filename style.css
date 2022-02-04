@@ -18,7 +18,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    border: 1px solid black;
+    border: 1px solid rgba(38, 169, 230, 0.877);
 }
 
 .tile:hover {
