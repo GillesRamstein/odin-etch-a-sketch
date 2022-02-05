@@ -11,9 +11,29 @@
 </head>
 
 <body>
-
-    <div id="container"></div>
-
+    <div id="container">
+        <h1>Etch'n Sketch</h1>
+        <div id="canvas"></div>
+        <span>
+            <span>Grid Dimension (10 - 100)</span>
+            <input type="number" id="grid-size" min="10" max="100"></input>
+            <button id="reset-button">Reset canvas</button>
+        </span>
+        <div id="palette">
+            <div id="background">
+                <h2>Canvas</h2>
+                <input type="color" value="#F0FFFF" id="canvas-color">
+            </div>
+            <div id="pencil">
+                <h2>Brush</h2>
+                <input type="color" value="#00FFFF" id="brush-color">
+            </div>
+            <div id="intensity">
+                <h2>Intensity</h2>
+                <input type="range" value="2" min="0" max="100" id="brush-intensity">
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

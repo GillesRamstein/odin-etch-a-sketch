@@ -12,7 +12,18 @@ body {
     justify-content: center;
 }
 
+h1 {
+    font-size: 2.5rem;
+}
+
 #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#canvas {
     width: 50vh;
     height: 50vh;
     display: flex;
@@ -21,7 +32,40 @@ body {
     border: 1px solid rgba(38, 169, 230, 0.877);
 }
 
-.tile:hover {
-    background-color: yellow;
-    transition: all 0.5s ease-out;
+#grid-size {
+    background-color: rgb(87, 87, 87);
+}
+
+#reset-button {
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    background-color: rgb(87, 87, 87);
+}
+
+#palette {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem 2rem;
+    border-radius: 0.4rem;
+    border: 1px solid rgb(46, 45, 45);
+    background-color: rgb(87, 87, 87);
+}
+
+#background, #pencil, #intensity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 1rem;
+}
+
+h2 {
+    font-size: 1rem;
+    margin-right: .3rem;
+}
+
+#canvas-color, #brush-color {
+    background-color: rgb(87, 87, 87);
+    border-color: rgb(87, 87, 87);
 }
